@@ -6,9 +6,9 @@
  * Date: 16-3-26
  * Time: 下午12:15
  */
-namespace Karboom\RestfulParser;
+namespace Karboom;
 
-class RSParser
+class RestfulParser
 {
     public $default_per_page;
     public $id_regs;

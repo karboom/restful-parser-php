@@ -6,14 +6,14 @@
  * Date: 16-3-26
  * Time: 下午2:14
  */
-namespace Karboom\RestfulParser;
+namespace Karboom;
 
-class RSParserTest extends \PHPUnit_Framework_TestCase
+class RestfulParserTest extends \PHPUnit_Framework_TestCase
 {
     public $rsparser;
 
     public function setUp() {
-        $this->rsparser = new RSParser(30, array('/\d+/'));
+        $this->rsparser = new RestfulParser(30, array('/\d+/'));
     }
 
     public function testResult() {
