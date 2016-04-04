@@ -1,0 +1,17 @@
+{
+    "name": "karboom/restful-parser",
+    "description": "Standard for restful URI and query string.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "karboom",
+            "email": "mail@karboom.me"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*"
+    },
+    "autoload" : {
+        "psr-4" : {"Karboom\\": ""}
+    }
+}
