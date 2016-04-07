@@ -17,10 +17,10 @@ class RestfulParserTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testResult() {
-        $url = '/www.test.com/student/1/pet/2/?name=123&exc_name=B&inc_height=12,13';
+        $url = '/www.test.com/student/1/pet/2/?bet_age=20,30&name=123&exc_name=B&inc_height=12,13';
 
         $result = $this->rsparser->parse($url, array(), array());
 
-        var_dump($result);
+        $this->assertEquals([20, 30], $result['filters'][0]['value']);
     }
 }

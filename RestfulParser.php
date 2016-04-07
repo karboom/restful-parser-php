@@ -31,7 +31,8 @@ class RestfulParser
             'max_' => '<',
             'min_' => '>',
             'exc_' => '!=',
-            'inc_' => 'in'
+            'inc_' => 'in',
+            'bet_' => 'between'
         );
 
         // set default condition
@@ -45,7 +46,7 @@ class RestfulParser
         }
 
         // change val by key
-        if ('in' == $op) {
+        if (in_array($op, ['in', 'between'])) {
             $val = preg_split('/,/', $val);
         }
 
@@ -86,6 +87,23 @@ class RestfulParser
             if (in_array($key, $reserve)) continue;
 
             array_push($result['filters'], $this->parse_filter($key, $val));
+        }
+
+        if (!empty($query['sort'])) {
+            foreach (preg_split('/,/', $query['sort']) as $field) {
+                if (0 === strpos($field, '-')) {
+                    $name = substr($field, 1);
+                    $order = 'desc';
+                } else {
+                    $name = $field;
+                    $order = 'asc';
+                }
+
+                array_push($result['sort'], [
+                    'name' => $name,
+                    'order' => $order
+                ]);
+            }
         }
 
         if (!empty($query['per_page'])) {
